@@ -1,14 +1,22 @@
 # -*- coding: utf-8 -*-
-"""Gop 4 file ket qua khao sat lop 12 thanh 1 workbook duy nhat."""
+"""Gop 5 file ket qua khao sat lop 12 thanh 1 workbook duy nhat.
+
+Dung: python tools/build_workbook.py [dot]   (mac dinh dot = 1)
+Doc 5 file diem goc trong dotks/<dot>/, ghi TONG-HOP-KQ-KS-LOP12.xlsx vao cung thu muc do.
+"""
 import os
+import sys
 import unicodedata
 import openpyxl
 from openpyxl.styles import Font, Alignment, PatternFill, Border, Side
 from openpyxl.formatting.rule import CellIsRule
 from openpyxl.utils import get_column_letter
 
-SRC = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # thư mục KS (cha của tools)
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))   # thư mục KS (cha của tools)
+DOT = sys.argv[1] if len(sys.argv) > 1 else "1"                      # đợt khảo sát
+SRC = os.path.join(ROOT, "dotks", DOT)                               # nơi chứa 5 file điểm gốc
 OUT = os.path.join(SRC, "TONG-HOP-KQ-KS-LOP12.xlsx")
+print("nguon:", SRC)
 
 # (tu khoa ten file, ten mon, chi so cot SBD/ten/ngay sinh/diem/lop, dong du lieu dau tien 1-based)
 CONFIG = [

@@ -2,10 +2,16 @@
 # Gồm 5 file điểm gốc của trường (dữ liệu cá nhân của học sinh — git giữ lịch sử
 # vĩnh viễn, repo có lúc nào chuyển sang public là lịch sử lộ theo) và bản Excel
 # gộp do tools\build_workbook.py dựng ra (dựng lại được, không cần version).
+# Cả 6 file nằm trong dotks\<đợt>\.
 #
 # Dùng "*.xlsx" chứ không liệt kê từng tên: tên file tiếng Việt trên đĩa ở dạng
 # Unicode tổ hợp (NFD) nên dòng ignore viết dạng dựng sẵn (NFC) sẽ không khớp.
 *.xlsx
+*.xlsb
+
+# Bản dựng ra từ web-src\build.py — sinh lại được, không cần version.
+# Bản phát lên mạng nằm ở deploy-vercel\index.html (được git theo dõi).
+TRA-CUU-KQ-KS-LOP12.html
 
 # Rác hệ thống
 Thumbs.db

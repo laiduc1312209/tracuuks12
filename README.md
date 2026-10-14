@@ -4,34 +4,36 @@ Trang tra cứu điểm cho phụ huynh và học sinh: **một file HTML tự c
 
 **508 học sinh · 12 lớp · 5 môn** (Toán, Lý, Hóa, Anh, Văn)
 
-## ⚠️ Riêng tư — đọc trước khi đổi repo sang public
-
-Toàn bộ điểm của 508 học sinh nằm **trong** `TRA-CUU-KQ-KS-LOP12.html` và `web-src/data.json`. Ai mở được file hoặc link là đọc được hết. Vì vậy:
-
-- **Repo này phải để private.** Chuyển sang public là toàn bộ điểm lộ ra công khai, **kể cả lịch sử commit** — đổi lại private sau đó cũng không xoá được những gì đã bị máy tìm kiếm sao lại.
-- `.gitignore` đã loại 5 file điểm gốc của trường và bản Excel gộp, để lịch sử git không chứa chúng ngay từ commit đầu.
-- Khi đã deploy thì **site vẫn công khai theo link** (bất kể repo private): chỉ gửi link trong nhóm Zalo lớp hoặc email phụ huynh, đừng đăng lên Facebook hay website trường.
+Trang đang chạy: <https://tracuuks12.vercel.app/>
 
 ## Cấu trúc
 
 | Đường dẫn | Là gì |
 |---|---|
-| `TRA-CUU-KQ-KS-LOP12.html` | Bản phát hành để gửi phụ huynh — mở trực tiếp, chạy offline, không cần mạng |
-| `deploy-vercel/` | Bản đưa lên Vercel: `index.html` + `robots.txt` + `vercel.json` |
-| `deploy-cloudflare/` | Bản đưa lên Cloudflare Pages: `index.html` + `robots.txt` + `_headers` |
-| `web-src/` | Nguồn: `app.js`, `app.css`, `index.html` (khung), `data.json` (dữ liệu), `build.py` |
-| `tools/` | `build_workbook.py` (gộp 5 file điểm thành một Excel), `validate_workbook.py` |
-| `DESIGN.md` · `PRODUCT.md` | Hệ thống thiết kế và mô tả sản phẩm |
-| `HUONG-DAN.md` · `HUONG-DAN-DEPLOY.md` | Hướng dẫn sử dụng và hướng dẫn đưa lên mạng |
+| `dotks\1\` | Nguồn của đợt khảo sát 1: 5 file điểm gốc và bản gộp `TONG-HOP-KQ-KS-LOP12.xlsx`. Mọi file `.xlsx` đều bị `.gitignore` chặn, không nằm trong git |
+| `web-src\` | Nguồn trang: `app.js`, `app.css`, `index.html` (khung), `data.json` (dữ liệu đã trích), `build.py` |
+| `deploy-vercel\` | Bản phát lên Vercel: `index.html` + `robots.txt` + `vercel.json` |
+| `tools\` | `build_workbook.py` (gộp điểm), `extract_web_data.py` (ra `data.json`), `validate_workbook.py` (kiểm chéo) |
+| `DESIGN.md`, `.impeccable\` | Hệ thống thiết kế và biên bản review |
+| `AGENTS.md` | Ghi chú cho phiên làm việc tự động |
 
-`index.html` trong hai thư mục `deploy-*` là bản sao của file phát hành — cần chép lại mỗi lần dựng lại (lệnh ở dưới).
+`TRA-CUU-KQ-KS-LOP12.html` là **file sinh ra** khi dựng nên không nằm trong git; bản `deploy-vercel\index.html` được git theo dõi và phải giống nó từng byte.
 
 ## Dựng lại
 
 ```
-python web-src\build.py
+python tools\validate_workbook.py         # kiểm chéo 5 file gốc (mong đợi: mismatches: 0)
+python tools\build_workbook.py            # -> dotks\1\TONG-HOP-KQ-KS-LOP12.xlsx
+python tools\extract_web_data.py          # -> web-src\data.json
+python web-src\build.py                   # -> TRA-CUU-KQ-KS-LOP12.html
 Copy-Item TRA-CUU-KQ-KS-LOP12.html deploy-vercel\index.html -Force
-Copy-Item TRA-CUU-KQ-KS-LOP12.html deploy-cloudflare\index.html -Force
 ```
 
-`web-src\build.py` chỉ dùng thư viện chuẩn của Python. Riêng `tools\*.py` cần `openpyxl`.
+- Đợt khảo sát khác thì tạo `dotks\2\` rồi truyền số đợt: `python tools\build_workbook.py 2` (cả `extract_web_data.py` và `validate_workbook.py` cũng nhận tham số này).
+- `tools\*.py` cần `openpyxl`; `web-src\build.py` chỉ dùng thư viện chuẩn.
+- Push lên nhánh `main` là Vercel tự dựng lại trang.
+- Hướng dẫn cũ (`HUONG-DAN.md`, `HUONG-DAN-DEPLOY.md`, `PRODUCT.md`) đã bỏ khỏi repo; lấy lại bằng `git show <commit>:<tên file>` nếu cần.
+
+## Dữ liệu
+
+Điểm nằm trong `web-src\data.json` và trong các bản HTML đã dựng. Hai nhãn vắng khác nhau: `Không thi` (không dự **một** môn) và `Vắng thi` (vắng **cả năm** môn — 12 em, không có ĐTB, không xếp thứ). ĐTB tính trên đúng những môn em đó dự thi; vắng không bị tính là 0.

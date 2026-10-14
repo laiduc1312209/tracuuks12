@@ -1,13 +1,19 @@
 # -*- coding: utf-8 -*-
-"""Trich du lieu tu TONG-HOP-KQ-KS-LOP12.xlsx ra data.json cho web."""
+"""Trich du lieu tu TONG-HOP-KQ-KS-LOP12.xlsx ra data.json cho web.
+
+Dung: python tools/extract_web_data.py [dot]   (mac dinh dot = 1)
+Doc dotks/<dot>/TONG-HOP-KQ-KS-LOP12.xlsx, ghi web-src/data.json.
+"""
 import json
 import os
 import re
+import sys
 import openpyxl
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # thu muc KS
-
-SRC = os.path.join(ROOT, "TONG-HOP-KQ-KS-LOP12.xlsx")
+DOT = sys.argv[1] if len(sys.argv) > 1 else "1"                     # dot khao sat
+SRC = os.path.join(ROOT, "dotks", DOT, "TONG-HOP-KQ-KS-LOP12.xlsx")
 OUT = os.path.join(ROOT, "web-src", "data.json")
+print("nguon:", SRC)
 
 wb = openpyxl.load_workbook(SRC, data_only=True)
 ws = wb["TongHop"]

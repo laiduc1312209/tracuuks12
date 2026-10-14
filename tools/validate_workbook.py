@@ -1,13 +1,23 @@
-import openpyxl, os
+"""Kiem cheo 5 file diem goc: SBD / ten / lop giua cac mon, va thong ke diem.
+
+Dung: python tools/validate_workbook.py [dot]   (mac dinh dot = 1)
+"""
+import openpyxl, os, sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # thu muc KS
 from collections import Counter
 
-D = ROOT
-files = sorted([n for n in os.listdir(D) if n.lower().endswith(".xlsx")])
+# dot khao sat: mac dinh dotks/1, doi bang tham so dong lenh
+DOT = sys.argv[1] if len(sys.argv) > 1 else "1"
+D = os.path.join(ROOT, "dotks", DOT)
+# bo qua ban tong hop (TONG-HOP-...xlsx) vi no khong phai file diem goc
+files = sorted([n for n in os.listdir(D)
+                if n.lower().endswith(".xlsx") and "tong" not in n.lower()])
+print("nguon:", D)
 SUBJ = {}
 for n in files:
     low = n.lower()
     if "toan" in low: SUBJ[n] = ("Toán", 6, 6, 1, 8, 9)
+    elif "ly" in low: SUBJ[n] = ("Lý", 6, 6, 1, 8, 9)
     elif "hoa" in low: SUBJ[n] = ("Hóa", 6, 6, 1, 8, 9)
     elif "anh" in low: SUBJ[n] = ("Anh", 6, 6, 1, 8, 9)
     else: SUBJ[n] = ("Văn", 4, 1, 2, 5, 4)
@@ -75,11 +85,14 @@ for k in allk:
             cls[str(recs[k][SUBJ[n][5]]).strip()] += 1
             break
 print("\nclasses:", dict(sorted(cls.items())))
-from collections import defaultdict
-cnt = defaultdict(int)
-for n, (subj, recs) in store.items():
-    for k, r in recs.items():
-        cnt[str(r[SUBJ[n][5]]).strip()] += 0
-print("\nstudents per subject by class (Toán):")
-c2 = Counter(str(recs[k][SUBJ[base_n][5]]).strip() for k in store[base_n][1])
+
+# kiem tra nhanh: so hoc sinh moi lop theo file diem goc dau tien (Toan)
+# (truoc day doan nay dung bien `recs` bi che tu vong lap tren, nen lay nham cot Lop)
+mon_base, recs_base = store[base_n]
+cot_lop = SUBJ[base_n][5]
+c2 = Counter()
+for k, r in recs_base.items():
+    if len(r) > cot_lop:
+        c2[str(r[cot_lop]).strip()] += 1
+print("\nstudents per subject by class (%s):" % mon_base)
 print(dict(sorted(c2.items())))
