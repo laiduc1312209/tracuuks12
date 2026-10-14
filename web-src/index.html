@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tra cứu kết quả khảo sát chất lượng khối 12</title>
+<meta name="description" content="Tra cứu điểm khảo sát chất lượng 5 môn (Toán, Lý, Hóa, Anh, Văn) của 508 học sinh khối 12 theo số báo danh hoặc họ tên.">
+<meta name="color-scheme" content="light">
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiI+PHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiBmaWxsPSIjZjJmMGVhIi8+PHRleHQgeD0iMTYiIHk9IjI0IiBmb250LWZhbWlseT0iR2VvcmdpYSwgJ1RpbWVzIE5ldyBSb21hbicsIHNlcmlmIiBmb250LXNpemU9IjIxIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjMTcxOTFiIj5LPC90ZXh0Pjwvc3ZnPg==">
+<style>/*__CSS__*/</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <aside class="rail">
+    <p class="mark"><span class="sq" aria-hidden="true"></span><span class="lb lb-ink">KSCL&nbsp;12</span></p>
+
+    <nav class="nav" role="tablist" aria-label="Khu vực">
+      <button type="button" role="tab" id="tab-tracuu" aria-controls="view-tracuu" aria-selected="true" tabindex="0"><span class="detent" aria-hidden="true"></span>Tra cứu</button>
+      <button type="button" role="tab" id="tab-danhsach" aria-controls="view-danhsach" aria-selected="false" tabindex="-1"><span class="detent" aria-hidden="true"></span>Danh sách</button>
+      <button type="button" role="tab" id="tab-thongke" aria-controls="view-thongke" aria-selected="false" tabindex="-1"><span class="detent" aria-hidden="true"></span>Thống kê</button>
+    </nav>
+
+    <div class="foot">
+      <p class="lb">Nguồn</p>
+      <p>Bảng điểm gốc 5 môn của kỳ khảo sát chất lượng khối 12.</p>
+      <p class="lb lb-ink">Dùng nội bộ</p>
+      <p>File chứa bảng điểm của 508 học sinh. Chỉ phát trong nội bộ nhà trường.</p>
+    </div>
+  </aside>
+
+  <main class="main">
+
+    <header class="mast">
+      <div>
+        <h1>Kết quả khảo sát chất lượng khối 12</h1>
+        <p class="sub">Năm môn Toán · Lý · Hóa · Anh · Văn, <span class="num">508</span> học sinh trong <span class="num">12</span> lớp. Ô ghi <span class="struck">không thi</span> nghĩa là em không dự môn đó, còn <span class="struck">vắng thi</span> là vắng cả năm môn — đều không phải điểm 0.</p>
+      </div>
+
+      <form class="search" id="search" role="search" autocomplete="off">
+        <label class="lb" for="q">Số báo danh hoặc họ tên</label>
+        <div class="field">
+          <input id="q" name="q" type="search" inputmode="search" spellcheck="false" placeholder="12000013 · hoặc gõ tên" aria-describedby="qhint">
+          <button class="clear" id="clearq" type="button" aria-label="Xoá ô tìm kiếm">
+            <svg width="13" height="13" viewBox="0 0 13 13" aria-hidden="true"><path d="M1 1l11 11M12 1L1 12" stroke="currentColor" stroke-width="1.25" fill="none"/></svg>
+          </button>
+        </div>
+        <p class="hint" id="qhint">Gõ không cần dấu cũng được. Kết quả cập nhật ngay khi bạn gõ.</p>
+      </form>
+    </header>
+
+    <p class="live" id="live" role="status" aria-live="polite"></p>
+
+    <div class="band ruled" id="band" data-r="b">
+      <p class="lb" id="scopeline">Đang xem 508/508 học sinh</p>
+      <div class="classes" id="classes" role="group" aria-label="Lọc theo lớp"></div>
+      <div class="keys" id="keys" role="group" aria-label="Sắp xếp theo"></div>
+    </div>
+
+    <section id="view-tracuu" class="view" role="tabpanel" aria-labelledby="tab-tracuu" tabindex="-1">
+      <div id="hits" class="hits ruled" data-r="rows" data-render="rules"></div>
+      <div id="slip"></div>
+    </section>
+
+    <section id="view-danhsach" class="view" role="tabpanel" aria-labelledby="tab-danhsach" tabindex="-1" hidden>
+      <p class="sr" id="list-summary" aria-live="polite"></p>
+      <div class="wrap ruled" id="tablewrap" data-r="rules" data-render="rules">
+        <table id="kq">
+          <caption class="sr">Bảng điểm khảo sát chất lượng 5 môn của 508 học sinh khối 12, sắp xếp và lọc theo lựa chọn phía trên.</caption>
+          <thead>
+            <tr>
+              <th scope="col" class="t-l">STT</th>
+              <th scope="col" class="t-l">Số BD</th>
+              <th scope="col" class="t-l">Họ và tên</th>
+              <th scope="col" class="t-l">Lớp</th>
+              <th scope="col">Toán</th>
+              <th scope="col">Lý</th>
+              <th scope="col">Hóa</th>
+              <th scope="col">Anh</th>
+              <th scope="col">Văn</th>
+              <th scope="col">Tổng</th>
+              <th scope="col">ĐTB</th>
+            </tr>
+          </thead>
+          <tbody id="tbody"></tbody>
+          <tfoot id="tfoot"></tfoot>
+        </table>
+      </div>
+    </section>
+
+    <section id="view-thongke" class="view" role="tabpanel" aria-labelledby="tab-thongke" tabindex="-1" hidden>
+      <div id="stats"></div>
+    </section>
+
+    <footer class="foot-doc ruled" data-r="t" data-render="rules">
+      <div class="cols">
+        <div>
+          <p class="lb">Nguồn dữ liệu</p>
+          <p>Bảng điểm khảo sát chất lượng khối 12: Toán, Lý, Hóa, Anh, Văn — 508 thí sinh, số báo danh 12000001 đến 12000508, 12 lớp. Bản tổng hợp dùng để dựng trang này là <span class="num">TONG-HOP-KQ-KS-LOP12.xlsx</span>.</p>
+        </div>
+        <div>
+          <p class="lb">Phần dữ liệu còn thiếu</p>
+          <p>Hai học sinh không có trong bảng điểm môn Văn (Nguyễn Tấn Dũng, 12000107 và Nguyễn Mạnh Tuấn Vũ, 12000499). Mười hai học sinh không có điểm ở cả năm môn, các em này không được xếp thứ tự theo ĐTB.</p>
+        </div>
+        <div>
+          <p class="lb">Cách tính</p>
+          <p>ĐTB là trung bình cộng của những môn em đó thực sự có điểm; môn <span class="struck">không thi</span> không bị tính là 0; em <span class="struck">vắng thi</span> cả năm môn thì không có ĐTB. Tổng điểm vì thế không so sánh được trực tiếp giữa hai học sinh dự thi số môn khác nhau, nên hãy so bằng ĐTB hoặc bằng từng môn.</p>
+        </div>
+        <div>
+          <p class="lb">Quyền riêng tư</p>
+          <p>Toàn bộ họ tên, ngày sinh và điểm nằm ngay trong file này, ai mở file cũng xem được cả danh sách. Không nên đăng công khai lên internet.</p>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <aside class="apparatus" aria-label="Số liệu bên lề">
+    <div class="blk">
+      <p class="lb" id="apLabel">Đang xem</p>
+      <span class="big num" id="apBig">508</span>
+      <p class="note" id="apNote">trên tổng số 508 học sinh</p>
+    </div>
+
+    <div class="blk ruled" data-r="t" data-render="rules">
+      <p class="lb">Số liệu</p>
+      <dl id="apList"></dl>
+    </div>
+
+    <div class="blk ruled" data-r="t" data-render="rules">
+      <p class="lb">Đọc bảng kê</p>
+      <div class="legend">
+        <span><span class="sw-red num">3.50</span> điểm dưới 5</span>
+        <span><span class="sw-hatch" aria-hidden="true"><svg width="22" height="10" viewBox="0 0 22 10"><path d="M0 10L22 0" stroke="currentColor" stroke-width="1" fill="none"/></svg></span> <span class="struck">không thi</span> không dự môn đó, không phải 0</span>
+        <span><span class="sw-hatch" aria-hidden="true"><svg width="22" height="10" viewBox="0 0 22 10"><path d="M0 10L22 0" stroke="currentColor" stroke-width="1" fill="none"/></svg></span> <span class="struck">vắng thi</span> vắng cả năm môn</span>
+        <span><span class="sw-br" aria-hidden="true"><svg width="20" height="13" viewBox="0 0 20 13"><rect x="0.5" y="0.5" width="19" height="12" fill="none" stroke="currentColor"/></svg></span> dòng tìm thấy</span>
+        <span><span class="sw-mark" aria-hidden="true"></span> dòng đã mở phiếu</span>
+      </div>
+    </div>
+  </aside>
+
+</div>
+
+<noscript>
+  <p style="padding:24px;font:400 16px/1.6 system-ui,sans-serif">Trang này cần JavaScript để tra cứu. Nếu tiện ích bị tắt, bạn xem trực tiếp file <strong>TONG-HOP-KQ-KS-LOP12.xlsx</strong>.</p>
+</noscript>
+
+<script type="application/json" id="kqdata">/*__DATA__*/</script>
+<script>/*__JS__*/</script>
+</body>
+</html>

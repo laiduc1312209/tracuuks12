@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-14T14:35:27+07:00",
+  "title": "Design System: KSCL 12 — bảng kê có thước kẻ",
+  "extensions": {
+    "colorMeta": {
+      "giay-xuong": { "role": "neutral", "displayName": "Giấy xương", "canonical": "oklch(95.5% 0.008 91)", "tonalRamp": ["#0c0b07", "#262521", "#43423d", "#63615c", "#84827d", "#a7a59f", "#cbc9c3", "#f0eee8"] },
+      "giay-xuong-2": { "role": "neutral", "displayName": "Giấy xương 2", "canonical": "oklch(92.2% 0.012 92)", "tonalRamp": ["#0d0b06", "#27251e", "#44423b", "#646159", "#85827a", "#a8a59c", "#ccc9c0", "#f1eee5"] },
+      "giay-xuong-3": { "role": "neutral", "displayName": "Giấy xương 3", "canonical": "oklch(88.9% 0.014 89)", "tonalRamp": ["#0e0b05", "#28251d", "#45423a", "#646158", "#868279", "#a9a59b", "#cdc9bf", "#f2eee4"] },
+      "muc-toner": { "role": "neutral", "displayName": "Mực toner", "canonical": "oklch(21.2% 0.005 248)", "tonalRamp": ["#0a0b0d", "#232527", "#404245", "#5f6164", "#808385", "#a3a5a8", "#c7c9cc", "#eceff2"] },
+      "muc-toner-2": { "role": "neutral", "displayName": "Mực toner 2", "canonical": "oklch(38.7% 0.009 89)", "tonalRamp": ["#0d0b07", "#272520", "#44423d", "#63615c", "#84827d", "#a7a59f", "#cbc9c3", "#f1eee8"] },
+      "muc-toner-3": { "role": "neutral", "displayName": "Mực toner 3", "canonical": "oklch(47.1% 0.011 94)", "tonalRamp": ["#0d0b06", "#27251f", "#44423b", "#63615a", "#84827b", "#a7a59d", "#cbc9c1", "#f1eee6"] },
+      "duong-ke": { "role": "neutral", "displayName": "Đường kẻ", "canonical": "oklch(82.0% 0.016 90)", "tonalRamp": ["#0e0b05", "#28251c", "#454239", "#656157", "#868278", "#a9a59a", "#cdc9be", "#f2eee3"] },
+      "duong-ke-2": { "role": "neutral", "displayName": "Đường kẻ 2", "canonical": "oklch(72.6% 0.017 86)", "tonalRamp": ["#0e0b04", "#29251c", "#464238", "#656157", "#877277", "#aaa59a", "#cec9bd", "#f3eee2"] },
+      "son-do": { "role": "primary", "displayName": "Son đỏ", "canonical": "oklch(49.5% 0.157 30)", "tonalRamp": ["#210000", "#4e0000", "#810000", "#a83125", "#d05647", "#f87a69", "#ffb3a7", "#ffe9e5"] },
+      "xanh-bi": { "role": "secondary", "displayName": "Xanh bi", "canonical": "oklch(38.4% 0.111 263)", "tonalRamp": ["#000039", "#051f5a", "#203e7c", "#3e5fa0", "#5e81c5", "#80a4eb", "#adcaff", "#e6efff"] },
+      "da-quang": { "role": "tertiary", "displayName": "Dạ quang", "canonical": "oklch(87.0% 0.141 101)", "tonalRamp": ["#0f0b00", "#2b2500", "#4b4300", "#6e6200", "#938400", "#b8a724", "#ddcc53", "#fff191"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Tiêu đề masthead, một dòng, cân dòng." },
+      "headline": { "displayName": "Headline", "purpose": "Tên học sinh trên phiếu điểm — cấp cao nhất của phần dữ liệu." },
+      "title": { "displayName": "Title", "purpose": "Tiêu đề mục, nhóm lớn trong Thống kê." },
+      "body": { "displayName": "Body", "purpose": "Thân chữ mặc định; đoạn dẫn 68ch, khối phiếu 560px." },
+      "label": { "displayName": "Label", "purpose": "Nhãn cột, khoá sắp xếp, nhãn trong lề — viết hoa, giãn 0,08em." },
+      "numeral": { "displayName": "Numeral", "purpose": "Mọi con số: SBD, điểm, tổng, ĐTB, số đếm — Archivo + tabular numerals." }
+    },
+    "shadows": [],
+    "motion": [
+      { "name": "ke-vach", "value": "clip-path: inset(0 100% 0 0) → inset(0 0 0 0) 460ms cubic-bezier(0.22, 1, 0.36, 1)", "purpose": "Lớp thước kẻ của phiếu được vẽ từ trái sang phải khi đổi sang học sinh khác." },
+      { "name": "slide-in", "value": "opacity 0→1, translateX(-4px)→0 320ms cubic-bezier(0.22, 1, 0.36, 1), trễ 40/80ms", "purpose": "Thân phiếu hiện dần theo ba nhịp, cùng một mô-típ duy nhất của trang." },
+      { "name": "ease-standard", "value": "cubic-bezier(0.22, 1, 0.36, 1)", "purpose": "Ease-out hàm mũ cho mọi chuyển động." },
+      { "name": "state-fast", "value": "background-color 120ms linear", "purpose": "Phản hồi rê chuột trên hàng kết quả và ô detent." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "720px", "purpose": "Ẩn nhãn lớp trong ô họ tên (bảng kê đã có cột lớp)." },
+      { "name": "md", "value": "900px", "purpose": "Dưới ngưỡng này rail thành dải ngang và bảng kê gấp thành khối theo từng học sinh." },
+      { "name": "lg", "value": "1200px", "purpose": "Từ đây hiện lề chú giải 264px thành cột thứ ba." }
+    ]
+  },
+  "components": [
+    {
+      "name": "Khoá nav trong rail",
+      "kind": "nav",
+      "refersTo": "nav-key",
+      "description": "Ba khoá chuyển khu vực; trạng thái mở là ô detent đặc mực, không phải nền nhạt.",
+      "html": "<button class=\"ds-nav-key\" data-on=\"true\"><span class=\"ds-detent\"></span>Tra cứu</button>",
+      "css": ".ds-nav-key { appearance: none; background: none; border: 0; padding: 8px 0 8px 21px; text-align: left; cursor: pointer; position: relative; color: var(--muc-toner-2); font: 500 13.5px/1.3 'Archivo', 'Segoe UI', system-ui, sans-serif; } .ds-nav-key:hover { color: var(--muc-toner); } .ds-nav-key[data-on='true'] { color: var(--muc-toner); font-weight: 600; } .ds-detent { position: absolute; left: 0; top: 50%; width: 7px; height: 7px; margin-top: -3.5px; border: 1px solid var(--duong-ke-2); } .ds-nav-key[data-on='true'] .ds-detent { background: var(--muc-toner); border-color: var(--muc-toner); }"
+    },
+    {
+      "name": "Chip lọc lớp",
+      "kind": "chip",
+      "refersTo": "filter-chip",
+      "description": "Lọc một lớp; đang lọc thì đặc mực và chữ đổi sang màu giấy.",
+      "html": "<button class=\"ds-chip\" data-on=\"false\">12A</button>",
+      "css": ".ds-chip { appearance: none; background: none; border: 1px solid var(--duong-ke); border-radius: 0; padding: 4px 9px; cursor: pointer; color: var(--muc-toner-2); font: 500 12.5px/1.2 'Archivo', 'Segoe UI', system-ui, sans-serif; } .ds-chip:hover { border-color: var(--duong-ke-2); color: var(--muc-toner); } .ds-chip[data-on='true'] { background: var(--muc-toner); border-color: var(--muc-toner); color: var(--giay-xuong); }"
+    },
+    {
+      "name": "Khoá sắp xếp",
+      "kind": "button",
+      "refersTo": "sort-key",
+      "description": "Sắp bảng kê theo một môn hoặc ĐTB; mũi tên hướng là SVG nét vẽ, không phải ký tự.",
+      "html": "<button class=\"ds-key\" data-on=\"true\">Toán<svg class=\"ds-dir\" width=\"7\" height=\"9\" viewBox=\"0 0 7 9\" aria-hidden=\"true\"><path d=\"M3.5 0.5V8.5M1 6L3.5 8.5L6 6\" stroke=\"currentColor\" stroke-width=\"1\" fill=\"none\"/></svg></button>",
+      "css": ".ds-key { appearance: none; background: none; border: 0; padding: 3px 0 3px 15px; cursor: pointer; position: relative; color: var(--muc-toner-3); font: 600 11.5px/1.2 'Archivo', 'Segoe UI', system-ui, sans-serif; letter-spacing: 0.08em; text-transform: uppercase; } .ds-key:hover { color: var(--muc-toner); } .ds-key .ds-detent { position: absolute; left: 0; top: 50%; width: 7px; height: 7px; margin-top: -3.5px; border: 1px solid var(--duong-ke-2); } .ds-key[data-on='true'] { color: var(--muc-toner); } .ds-key[data-on='true'] .ds-detent { background: var(--muc-toner); border-color: var(--muc-toner); } .ds-dir { margin-left: 3px; vertical-align: -1px; }"
+    },
+    {
+      "name": "Ô tra cứu",
+      "kind": "input",
+      "refersTo": "search-field",
+      "description": "Việc chính của phụ huynh; viền 1px mực toner là nét đậm nhất trong trang.",
+      "html": "<label class=\"ds-search\"><input type=\"search\" placeholder=\"Số báo danh hoặc họ tên\"></label>",
+      "css": ".ds-search { display: flex; } .ds-search input { flex: 1; min-width: 0; appearance: none; background: transparent; border: 1px solid var(--muc-toner); border-radius: 0; padding: 11px 12px; color: var(--muc-toner); font: 400 17px/1.3 'Source Serif 4', 'Times New Roman', serif; } .ds-search input::placeholder { color: var(--muc-toner-3); } .ds-search input:focus-visible { outline: 1px solid var(--xanh-bi); outline-offset: 2px; }"
+    },
+    {
+      "name": "Nút mở phiếu trong ô họ tên",
+      "kind": "button",
+      "refersTo": "row-name-button",
+      "description": "Chữ trong ô họ tên là nút thật: bấm hoặc Enter mở phiếu của học sinh đó.",
+      "html": "<button class=\"ds-rowname\">Hà Tú Anh</button>",
+      "css": ".ds-rowname { font: inherit; color: inherit; background: none; border: 0; padding: 0; text-align: left; cursor: pointer; text-underline-offset: 3px; } .ds-rowname:hover { text-decoration: underline; text-decoration-thickness: 1px; text-decoration-color: var(--duong-ke-2); } .ds-rowname:focus-visible { outline: 1px solid var(--xanh-bi); outline-offset: 2px; }"
+    },
+    {
+      "name": "Dòng kết quả (có ngoặc)",
+      "kind": "custom",
+      "refersTo": "result-row",
+      "description": "Kết quả tra cứu; dòng đang tìm thấy được ngoặc 1px và mang dạ quang.",
+      "html": "<button class=\"ds-hit\" data-found=\"true\"><span class=\"ds-hit-name\">Hà Tú Anh</span><span class=\"ds-hit-meta\">12000013</span><span class=\"ds-hit-meta\">12A</span></button>",
+      "css": ".ds-hit { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 8px 16px; align-items: baseline; padding: 12px 12px 12px 16px; background: none; border: 0; border-radius: 0; text-align: left; cursor: pointer; color: inherit; font: inherit; transition: background-color 120ms linear; position: relative; } .ds-hit:hover { background: var(--giay-xuong-2); } .ds-hit[data-found='true'] { background: var(--da-quang); } .ds-hit[data-found='true']::before { content: ''; position: absolute; inset: -3px 0; border: 1px solid var(--muc-toner); } .ds-hit-name { font-size: 17px; } .ds-hit-meta { font: 500 12.5px/1.2 'Archivo', 'Segoe UI', system-ui, sans-serif; color: var(--muc-toner-2); }"
+    },
+    {
+      "name": "Phiếu điểm một học sinh",
+      "kind": "custom",
+      "refersTo": "score-slip",
+      "description": "Năm hàng môn với ô đo, vạch mốc 5,0, gạch chéo cho ô vắng, tổng chốt bằng đường đôi.",
+      "html": "<div class=\"ds-slip\"><div class=\"ds-ident\"><span class=\"ds-name\">Hà Tú Anh</span><span class=\"ds-lb\">SBD 12000013</span><span class=\"ds-lb\">Lớp 12A</span></div><div class=\"ds-srow\"><span class=\"ds-lb\">Toán</span><span class=\"ds-meter\"><i style=\"width:77%\"></i><b></b></span><span class=\"ds-score\">7.70</span></div><div class=\"ds-srow\"><span class=\"ds-lb\">Lý</span><span class=\"ds-hatch\"></span><span class=\"ds-score ds-none\">không thi</span></div><div class=\"ds-srow ds-low\"><span class=\"ds-lb\">Hóa</span><span class=\"ds-meter\"><i class=\"ds-low\" style=\"width:42%\"></i><b></b></span><span class=\"ds-score\">4.20</span></div></div>",
+      "css": ".ds-slip { background: var(--giay-xuong); color: var(--muc-toner); font: 400 16.5px/1.55 'Source Serif 4', 'Times New Roman', serif; } .ds-ident { display: flex; flex-wrap: wrap; gap: 8px 24px; align-items: baseline; } .ds-name { font: 600 23px/1.2 'Source Serif 4', 'Times New Roman', serif; letter-spacing: -0.008em; } .ds-lb { font: 600 11.5px/1.2 'Archivo', 'Segoe UI', system-ui, sans-serif; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muc-toner-2); } .ds-srow { display: grid; grid-template-columns: minmax(88px, 128px) 1fr auto; gap: 16px; align-items: baseline; padding: 12px 0; border-bottom: 1px solid var(--duong-ke); } .ds-meter { position: relative; height: 7px; border-bottom: 1px solid var(--duong-ke); } .ds-meter i { position: absolute; left: 0; bottom: 0; height: 7px; background: var(--muc-toner); display: block; } .ds-meter i.ds-low { background: var(--son-do); } .ds-meter b { position: absolute; left: 50%; bottom: -3px; width: 1px; height: 13px; background: var(--duong-ke-2); } .ds-hatch { height: 7px; border-bottom: 1px solid var(--duong-ke); background-image: none; position: relative; } .ds-hatch::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; border-top: 1px solid var(--muc-toner-3); transform: rotate(-2.6deg); transform-origin: left bottom; } .ds-score { font-family: 'Archivo', 'Segoe UI', system-ui, sans-serif; font-size: 17px; font-variant-numeric: tabular-nums; text-align: right; min-width: 3.6em; } .ds-score.ds-low, .ds-low .ds-score { color: var(--son-do); } .ds-score.ds-none { color: var(--muc-toner-3); font-size: 12.5px; letter-spacing: 0.06em; text-transform: uppercase; text-decoration: line-through; text-decoration-color: var(--duong-ke-2); }"
+    },
+    {
+      "name": "Bảng kê 508 dòng",
+      "kind": "custom",
+      "refersTo": "ledger-table",
+      "description": "Cột hẹp, chữ số tabular, mỗi dòng một nét kẻ; ô vắng là chữ viết hoa chứ không phải số 0.",
+      "html": "<table class=\"ds-ledger\"><thead><tr><th class=\"ds-t-l\">Họ tên</th><th>Toán</th><th>Lý</th></tr></thead><tbody><tr><td class=\"ds-t-l\"><button class=\"ds-rowname\">Hà Tú Anh</button></td><td class=\"ds-n\">7.70</td><td class=\"ds-n ds-none\">không thi</td></tr><tr data-found=\"true\"><td class=\"ds-t-l\"><button class=\"ds-rowname\">Lê Văn Bình</button></td><td class=\"ds-n ds-low\">3.50</td><td class=\"ds-n\">6.00</td></tr></tbody></table>",
+      "css": ".ds-ledger { width: 100%; border-collapse: collapse; font-size: 15px; color: var(--muc-toner); font-family: 'Source Serif 4', 'Times New Roman', serif; } .ds-ledger th { background: var(--giay-xuong); border-bottom: 1px solid var(--muc-toner); padding: 0 0 8px; text-align: right; font: 600 11.5px/1.2 'Archivo', 'Segoe UI', system-ui, sans-serif; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muc-toner-2); } .ds-ledger td { padding: 9px 0; text-align: right; vertical-align: baseline; border-bottom: 1px solid var(--duong-ke); } .ds-ledger .ds-t-l { text-align: left; } .ds-ledger .ds-n { font-family: 'Archivo', 'Segoe UI', system-ui, sans-serif; font-size: 14.5px; font-variant-numeric: tabular-nums; white-space: nowrap; } .ds-ledger .ds-low { color: var(--son-do); } .ds-ledger .ds-none { color: var(--muc-toner-3); font-size: 11px; letter-spacing: 0.07em; text-transform: uppercase; } .ds-ledger tr:hover td { background: var(--giay-xuong-2); } .ds-ledger tr[data-found='true'] td { background: var(--da-quang); }"
+    },
+    {
+      "name": "Lề chú giải",
+      "kind": "custom",
+      "refersTo": "apparatus-margin",
+      "description": "Số đếm phạm vi đang xem, định nghĩa của học sinh đang mở, và chú giải bốn dấu.",
+      "html": "<aside class=\"ds-ap\"><p class=\"ds-apbig\">508</p><p class=\"ds-lb\">học sinh đang xem</p><dl class=\"ds-apdl\"><dt>Lớp</dt><dd>12A · 42 học sinh</dd><dt>ĐTB</dt><dd>6.90 · toàn khối 6.42</dd></dl><div class=\"ds-legend\"><span><b class=\"ds-sw-red\">3.50</b> điểm dưới 5</span><span><b class=\"ds-sw-hatch\"></b> ô vắng</span><span><b class=\"ds-sw-br\"></b> dòng tìm thấy</span><span><b class=\"ds-sw-mark\"></b> dòng đã mở phiếu</span></div></aside>",
+      "css": ".ds-ap { background: var(--giay-xuong); color: var(--muc-toner-3); font: 500 10.5px/1.45 'Archivo', 'Segoe UI', system-ui, sans-serif; } .ds-apbig { font: 600 34px/1.05 'Source Serif 4', 'Times New Roman', serif; color: var(--muc-toner); font-variant-numeric: tabular-nums; } .ds-lb { font: 600 11.5px/1.2 'Archivo', 'Segoe UI', system-ui, sans-serif; letter-spacing: 0.08em; text-transform: uppercase; } .ds-apdl { display: grid; grid-template-columns: auto 1fr; gap: 2px 12px; margin-top: 16px; } .ds-apdl dt { letter-spacing: 0.06em; text-transform: uppercase; } .ds-apdl dd { margin: 0; color: var(--muc-toner-2); } .ds-legend { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: 18px; } .ds-sw-red { color: var(--son-do); font-family: 'Archivo', 'Segoe UI', system-ui, sans-serif; } .ds-sw-hatch { display: inline-block; width: 18px; height: 1px; background: var(--muc-toner-3); transform: rotate(-20deg); vertical-align: 3px; margin-right: 4px; } .ds-sw-br { display: inline-block; width: 16px; height: 9px; border: 1px solid var(--muc-toner); vertical-align: -1px; margin-right: 4px; } .ds-sw-mark { display: inline-block; width: 14px; height: 9px; background: var(--da-quang); vertical-align: -1px; margin-right: 4px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Bảng kê có thước kẻ",
+    "overview": "Hệ thống này là một tờ bảng kê đang làm việc, không phải một trang trưng bày. Giấy xương làm nền, mực toner làm chữ, và mọi đường kẻ cấu trúc — viền ô, gạch đầu dòng, dấu ngoặc, vạch ngưỡng, gạch chéo — đều do một engine 1px duy nhất vẽ vào lớp SVG phủ trên từng khung, bám đúng nửa device pixel (snap()/snapFloor(), nét 1/dpr). Không có đường kẻ nào là border CSS, ngoại lệ duy nhất là gạch chân của hàng tiêu đề đang dính, vì phần tử position: sticky không host được lớp SVG dùng chung.\n\nCách trình bày đi theo kỷ luật của bản in: cột hẹp, chữ số tabular thẳng cột, nhãn viết hoa giãn chữ, và trạng thái thể hiện bằng dấu in chứ không bằng màu trang trí — ô vuông detent 7×7 nằm trơ một nét hairline khi nghỉ, đặc mực khi được chọn; ô không có số đo thì bị gạch chéo chứ không phải số 0. Ba dấu màu là toàn bộ lượng màu của hệ: son đỏ cho điểm dưới 5,0, xanh bi cho khung và focus, dạ quang cho đúng một dòng đã tìm thấy.\n\nĐiều hệ thống này từ chối: thẻ kết quả nổi trên nền xanh của ngành, bo góc, đổ bóng, chuyển sắc, và mọi thứ mô phỏng vật liệu mà trang không thực sự vẽ ra.",
+    "keyCharacteristics": [
+      "Một nguồn đường kẻ duy nhất: engine 1px vẽ mọi nét cấu trúc, bám nửa device pixel.",
+      "Phẳng tuyệt đối: 0 bo góc, 0 đổ bóng, 0 chuyển sắc, ở mọi trạng thái.",
+      "Ba dấu màu, mỗi dấu một nghĩa: son đỏ dưới 5,0 · xanh bi khung/focus · dạ quang dòng đã tìm thấy.",
+      "Chữ số luôn tabular, nhãn luôn viết hoa giãn chữ.",
+      "Trạng thái là dấu in: hairline → ô đặc → gạch chéo cho ô vắng."
+    ],
+    "rules": [
+      { "name": "The One Mark Rule", "body": "Son đỏ chỉ xuất hiện ở nơi một con số thấp hơn 5,0. Nếu son đỏ xuất hiện mà không có nghĩa \"dưới ngưỡng\", đó là lỗi hệ thống.", "section": "colors" },
+      { "name": "The Marker Rule", "body": "Dạ quang dành cho đúng một dòng: dòng đã tìm thấy hoặc đã mở phiếu. Không dùng dạ quang cho nhấn, cho nút, hay cho nhiều hơn một dòng cùng lúc.", "section": "colors" },
+      { "name": "The Tonal Paper Rule", "body": "Tách lớp bằng tông giấy (giay-xuong → giay-xuong-2 → giay-xuong-3), không bằng bóng.", "section": "colors" },
+      { "name": "The Tabular Numeral Rule", "body": "Mọi con số đi qua Archivo với font-variant-numeric: tabular-nums. Chữ số không thẳng cột là lỗi hệ thống, vì cả trang này tồn tại để so cột.", "section": "typography" },
+      { "name": "The Two Voices Rule", "body": "Serif nói phần con người, Archivo nói phần số liệu. Không trộn: nhãn và số không bao giờ dùng serif, câu chữ không bao giờ dùng Archivo.", "section": "typography" },
+      { "name": "The Flat-Sheet Rule", "body": "Không thêm bóng hay chuyển sắc ở bất kỳ trạng thái nào. Nếu một phần tử cần \"nổi\", nó cần một nét kẻ hoặc một dấu, không cần bóng.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do vẽ mọi nét cấu trúc bằng engine 1px và snap()/snapFloor(); nét phải bám nửa device pixel.",
+      "Do giữ border-radius: 0, không box-shadow, không background-image chuyển sắc ở mọi trạng thái.",
+      "Do đặt mọi con số trong Archivo với font-variant-numeric: tabular-nums.",
+      "Do thể hiện trạng thái bằng dấu in: hairline lúc nghỉ, ô đặc khi chọn, gạch chéo khi vắng.",
+      "Do dùng son đỏ chỉ cho giá trị dưới 5,0 và vạch ngưỡng 5,0.",
+      "Do giữ ô KHÔNG THI / VẮNG THI ngoài mọi phép tính và ngoài định dạng đỏ (vắng ≠ thấp).",
+      "Do giữ lề chú giải nói đúng thứ đang xem và cập nhật chú giải mỗi khi thêm dấu mới."
+    ],
+    "donts": [
+      "Don't dùng border, outline hay hr cho đường kẻ cấu trúc — ngoại lệ đã biết là gạch chân của hàng tiêu đề dính.",
+      "Don't bo góc, đổ bóng, chuyển sắc, hay làm mờ nền; kể cả ở trạng thái hover/focus.",
+      "Don't đặt font hệ thống làm giọng hiển thị: hai giọng của trang đều tự host và nhúng trong file.",
+      "Don't dùng ký tự Unicode hay emoji làm biểu tượng — mũi tên, ngoặc, detent, dấu chéo đều là SVG hoặc hình CSS.",
+      "Don't thêm nhãn nhỏ (kicker/eyebrow) phía trên một tiêu đề.",
+      "Don't dùng serif cho chữ số hay nhãn, và không dùng Archivo cho câu chữ.",
+      "Don't dùng dạ quang cho nhiều hơn một dòng, hay cho bất cứ thứ gì ngoài dòng đã tìm thấy/đã mở."
+    ]
+  }
+}
