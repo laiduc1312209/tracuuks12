@@ -1,14 +1,11 @@
-# Nguồn điểm gốc của trường — KHÔNG đưa lên git.
-# Đây là dữ liệu cá nhân của học sinh; git giữ lịch sử vĩnh viễn, nên nếu repo
-# có lúc nào bị chuyển sang public thì lịch sử cũng lộ theo.
-1.-KQ-KS-TOAN12.xlsx
-2. KQ KS LY12.xlsx
-3. KQ KS HOA12.xlsx
-5. KQ KS ANH12.xlsx
-Điểm Văn lần 1.xlsx
-
-# Bản Excel gộp do tools\build_workbook.py dựng ra — dựng lại được, không cần version.
-TONG-HOP-KQ-KS-LOP12.xlsx
+# KHÔNG đưa file Excel nào lên git.
+# Gồm 5 file điểm gốc của trường (dữ liệu cá nhân của học sinh — git giữ lịch sử
+# vĩnh viễn, repo có lúc nào chuyển sang public là lịch sử lộ theo) và bản Excel
+# gộp do tools\build_workbook.py dựng ra (dựng lại được, không cần version).
+#
+# Dùng "*.xlsx" chứ không liệt kê từng tên: tên file tiếng Việt trên đĩa ở dạng
+# Unicode tổ hợp (NFD) nên dòng ignore viết dạng dựng sẵn (NFC) sẽ không khớp.
+*.xlsx
 
 # Rác hệ thống
 Thumbs.db
