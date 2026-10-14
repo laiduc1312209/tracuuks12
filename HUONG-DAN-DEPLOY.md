@@ -116,6 +116,11 @@ git remote add origin https://github.com/<tài-khoản>/<tên-repo>.git
 git push -u origin main
 ```
 
+**Trước khi push, kiểm hai thứ:**
+
+- `git ls-files | findstr xlsx` phải **không ra gì**. Có file `.xlsx` trong danh sách thì đừng push: `.gitignore` phải chặn `*.xlsx`, chứ liệt kê từng tên là không khớp — tên file tiếng Việt trên đĩa ở dạng Unicode tổ hợp (NFD), khác dạng dựng sẵn (NFC) mà bạn gõ tay.
+- Repo trên GitHub đã để **Private** chưa.
+
 Lần push đầu tiên, Git Credential Manager sẽ mở trình duyệt cho bạn đăng nhập GitHub (hoặc bạn dán Personal Access Token). Chỉ lần đầu phải làm việc này.
 
 ### Nối vào Vercel
